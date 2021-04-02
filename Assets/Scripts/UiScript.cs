@@ -8,13 +8,12 @@ public class UiScript : MonoBehaviour
 {
 
     public bool next = false;
-    public GameObject textUI;
-    public GameObject menuUI;
-    public GameObject menuButtonText;
-    public GameObject quitButton;
-    public GameObject mainMenu;
-    public GameObject blocker;
-    private TMP_Text textLabel;
+    public GameObject textUI; //DialogueUI Panel
+    public GameObject menuUI; //Menu UI panel
+    public GameObject menuButtonText; //Text on menu button
+    public GameObject quitButton; //Quit button on menu
+    public GameObject blocker; //Translucent black blocker for menu
+    private TMP_Text textLabel; //Given at start, text on menu button
 
     // Start is called before the first frame update
     void Start()
