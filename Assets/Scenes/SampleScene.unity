@@ -133,9 +133,10 @@ GameObject:
   m_Component:
   - component: {fileID: 100819735}
   - component: {fileID: 100819736}
+  - component: {fileID: 100819737}
   m_Layer: 0
   m_Name: ContinueZone
-  m_TagString: Finish
+  m_TagString: Scene3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,6 +181,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &100819737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100819734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309439262bb38e545ba53b5d3ce0b102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &156279905
 GameObject:
   m_ObjectHideFlags: 3
@@ -1001,7 +1014,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 2.199997}
+  m_AnchoredPosition: {x: 0.000061035156, y: 2.2000122}
   m_SizeDelta: {x: 0.000061035156, y: -4.399994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &960999522
@@ -3848,7 +3861,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.4}
-  m_AnchoredPosition: {x: 0.00015258789, y: -0.00016784668}
+  m_AnchoredPosition: {x: 0.00012207031, y: -0.00018310547}
   m_SizeDelta: {x: 0.00024414062, y: -0.00033569336}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1556393189
@@ -4202,7 +4215,7 @@ GameObject:
   - component: {fileID: 1745288330}
   m_Layer: 0
   m_Name: IceGrid
-  m_TagString: Untagged
+  m_TagString: Scene2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
