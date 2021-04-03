@@ -14,6 +14,7 @@ public class UiScript : MonoBehaviour
     public GameObject quitButton; //Quit button on menu
     public GameObject blocker; //Translucent black blocker for menu
     private TMP_Text textLabel; //Given at start, text on menu button
+    public static bool isPaused = false;   // Conveys state of the pause menu so that player direction cannot be changed on pause 
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,7 @@ public class UiScript : MonoBehaviour
     {
         if (Time.timeScale == 0f)
         {
+            isPaused = false;
             menuUI.gameObject.SetActive(false);
             blocker.gameObject.SetActive(false);
             textLabel.text = "Show Menu";
@@ -53,6 +55,7 @@ public class UiScript : MonoBehaviour
         }
         else
         {
+            isPaused = true;
             menuUI.gameObject.SetActive(true);
             blocker.gameObject.SetActive(true);
             textLabel.text = "Hide Menu";
