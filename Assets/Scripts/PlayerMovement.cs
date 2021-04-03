@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.SceneManagement;
+
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
@@ -79,7 +81,19 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.tag == "Ground") {
             isIce = false;
         }
-     }
+        if (other.gameObject.tag == "Scene2")
+        {
+            SceneManager.LoadScene("Sample2Scene");
+        }
+        if (other.gameObject.tag == "Scene3")
+        {
+            SceneManager.LoadScene("Sample3Scene");
+        }
+        if (other.gameObject.tag == "Scene1")
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
+    }
 
     void OnTriggerStay2D(Collider2D other)
     {
