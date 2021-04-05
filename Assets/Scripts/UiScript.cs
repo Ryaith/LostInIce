@@ -31,6 +31,9 @@ public class UiScript : MonoBehaviour
     private string scene3load = "Is that Vel's scarf? I think he went further ahead... I hope he's still alright.";
     private string scene4load = "Vel-! ...Thank the gods he's okay. It's time to head home now...";
 
+    // Vel can say things, too
+    private string velFound = "K-Klarens! You found me! I'm okay, I got lost... but it's not so bad in this part of the cave!";
+
     private string klarens = "Klarens";
     private string vel = "Velius";
 
@@ -71,7 +74,7 @@ public class UiScript : MonoBehaviour
         {
             StartCoroutine(FadeBlack());
         }
-
+        isPaused = textUI.activeSelf ? true : false;
     }
 
     public void ContinueText()
