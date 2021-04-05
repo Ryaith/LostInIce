@@ -33087,7 +33087,7 @@ GameObject:
   - component: {fileID: 689487112}
   m_Layer: 0
   m_Name: Brother
-  m_TagString: Untagged
+  m_TagString: Vel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
