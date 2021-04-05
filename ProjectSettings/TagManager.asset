@@ -10,6 +10,8 @@ TagManager:
   - Scene3
   - Scene4
   - MainMenu
+  - Hole
+  - Vel
   layers:
   - Default
   - TransparentFX

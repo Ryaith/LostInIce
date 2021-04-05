@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     private float moveHorizontal;
     private float moveVertical;
 
+    (bool canInteract, string interactObj) interactInfo = (false, string.Empty);    // Basic object that tracks interaction info 
+
 
     public Animator anim;
     public ParticleSystem ps;
@@ -34,6 +36,23 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log("Pause Status: " + UiScript.isPaused);
         if (!UiScript.isPaused)
         {
+            // Debug.Log("INTERACT: " + canInteract);
+            if (!sliding && interactInfo.canInteract && Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("************* E HIT!");
+                // Trigger desired action on interact
+                switch(interactInfo.interactObj)
+                {
+                    case "Hole":
+                        Debug.Log("********************** HOLE ACTION");
+                        break;
+                    case "Vel":
+                        Debug.Log("********************** VEL ACTION");
+                        break;
+                    default:
+                        break;
+                }
+            }
             moveHorizontal = Input.GetAxisRaw("Horizontal");
             movingHorizontal = moveHorizontal != 0f;
             moveVertical = Input.GetAxisRaw("Vertical");
@@ -131,10 +150,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D other)
     {
-        Debug.Log("collide");
+        // Debug.Log("collide");
         if (isIce)
         {
             collision = true;
+        }
+        switch (other.gameObject.tag)
+        {
+            case "Hole":
+                setInteractObject(true, "Hole");
+                break;
+            case "Vel":
+                setInteractObject(true, "Vel");
+                break;
+            default:
+                break;
         }
     }
 
@@ -144,6 +174,17 @@ public class PlayerMovement : MonoBehaviour
         {
             collision = false;
         }
+        string exitTag = other.gameObject.tag;
+        if (exitTag == "Hole" || exitTag == "Vel")
+        {
+            setInteractObject(false, string.Empty);
+        }
+    }
+
+    private void setInteractObject(bool canInteract, string tag)
+    {
+        interactInfo.canInteract = canInteract;
+        interactInfo.interactObj = tag;
     }
 }
 
