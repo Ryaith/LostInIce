@@ -18675,7 +18675,7 @@ CompositeCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 198615435}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -22603,6 +22603,11 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!1 &291527607 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5227359504717347716, guid: c5151f164adf16448b46fe3b7995c671, type: 3}
+  m_PrefabInstance: {fileID: 1404785429}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &391048827
 GameObject:
   m_ObjectHideFlags: 0
@@ -33485,17 +33490,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 465172046408154376, guid: c5151f164adf16448b46fe3b7995c671, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.2000122
+      objectReference: {fileID: 0}
     - target: {fileID: 3307292965275035732, guid: c5151f164adf16448b46fe3b7995c671, type: 3}
       propertyPath: m_text
       value: Vel-! ...Thank the gods he's okay. It's time to head home now.
       objectReference: {fileID: 0}
+    - target: {fileID: 3831854164726310310, guid: c5151f164adf16448b46fe3b7995c671, type: 3}
+      propertyPath: blackImageObject
+      value: 
+      objectReference: {fileID: 291527607}
     - target: {fileID: 3902839348496442209, guid: c5151f164adf16448b46fe3b7995c671, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.1999817
+      value: 2.2000122
+      objectReference: {fileID: 0}
+    - target: {fileID: 4202360551434298500, guid: c5151f164adf16448b46fe3b7995c671, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6124280952881963396, guid: c5151f164adf16448b46fe3b7995c671, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124280952881963396, guid: c5151f164adf16448b46fe3b7995c671, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 7418577278326733510, guid: c5151f164adf16448b46fe3b7995c671, type: 3}
       propertyPath: m_Pivot.x
@@ -33580,6 +33601,10 @@ PrefabInstance:
     - target: {fileID: 7418577278326733510, guid: c5151f164adf16448b46fe3b7995c671, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7539311607781622294, guid: c5151f164adf16448b46fe3b7995c671, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.5999756
       objectReference: {fileID: 0}
     - target: {fileID: 8169019752540760991, guid: c5151f164adf16448b46fe3b7995c671, type: 3}
       propertyPath: m_Name

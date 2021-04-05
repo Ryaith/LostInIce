@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -32,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Pause Status: " + UiScript.isPaused);
+        //Debug.Log("Pause Status: " + UiScript.isPaused);
         if (!UiScript.isPaused)
         {
             moveHorizontal = Input.GetAxisRaw("Horizontal");
@@ -90,23 +89,28 @@ public class PlayerMovement : MonoBehaviour
         }
         if (other.gameObject.tag == "Scene2")
         {
-            SceneManager.LoadScene("Sample2Scene");
+            UiScript.blackOut = true;
+            UiScript.mapToLoad = "Sample2Scene";
         }
         if (other.gameObject.tag == "Scene3")
         {
-            SceneManager.LoadScene("Sample3Scene");
+            UiScript.blackOut = true;
+            UiScript.mapToLoad = "Sample3Scene";
         }
         if (other.gameObject.tag == "Scene1")
         {
-            SceneManager.LoadScene("SampleScene");
+            UiScript.blackOut = true;
+            UiScript.mapToLoad = "SampleScene";
         }
         if (other.gameObject.tag == "Scene4")
         {
-            SceneManager.LoadScene("Sample4Scene");
+            UiScript.blackOut = true;
+            UiScript.mapToLoad = "Sample4Scene";
         }
         if (other.gameObject.tag == "MainMenu")
         {
-            SceneManager.LoadScene("MainMenu");
+            UiScript.blackOut = true;
+            UiScript.mapToLoad = "MainMenu";
         }
     }
 
