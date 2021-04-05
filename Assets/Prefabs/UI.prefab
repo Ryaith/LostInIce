@@ -1543,3 +1543,5 @@ MonoBehaviour:
   quitButton: {fileID: 4191615732504385196}
   blocker: {fileID: 3743801650999823092}
   blackImageObject: {fileID: 5227359504717347716}
+  DialogueObject: {fileID: 2230694291861934295}
+  SpeakerObject: {fileID: 482303998033813375}
