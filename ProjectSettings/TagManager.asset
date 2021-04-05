@@ -8,6 +8,8 @@ TagManager:
   - Scene1
   - Scene2
   - Scene3
+  - Scene4
+  - MainMenu
   layers:
   - Default
   - TransparentFX

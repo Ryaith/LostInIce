@@ -100,6 +100,14 @@ public class PlayerMovement : MonoBehaviour
         {
             SceneManager.LoadScene("SampleScene");
         }
+        if (other.gameObject.tag == "Scene4")
+        {
+            SceneManager.LoadScene("Sample4Scene");
+        }
+        if (other.gameObject.tag == "MainMenu")
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
     void OnTriggerStay2D(Collider2D other)
