@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveHorizontal;
     private float moveVertical;
 
+    Vector2 lastSlideMovement;
 
     public Animator anim;
     public ParticleSystem ps;
@@ -59,7 +60,6 @@ public class PlayerMovement : MonoBehaviour
             rb.MovePosition(rb.position + slideMovement * speed * Time.fixedDeltaTime);
             yield return null;
         }
-
         ps.Stop();
         sliding = false;
         collision = false;
@@ -69,7 +69,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!sliding)
         {
-            //Debug.Log((movingHorizontal || movingVertical));
             if (isIce && (movingHorizontal || movingVertical))
             {
                 sliding = true;
@@ -80,6 +79,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
             }
+        }
+        else if (sliding)
+        {
+            // Lol there has to be a better way to do this
+            lastSlideMovement = slideMovement;
+            Debug.Log("last slide movement: " + lastSlideMovement);
         }
     }
 
@@ -119,10 +124,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D other)
     {
+        Vector2 collideNormal = other.contacts[0].normal;
         Debug.Log("collide");
+        // Collide check only from the front or else the player gets stuck on side collisions from walls
         if (isIce)
         {
-            collision = true;
+            bool horCollide = Mathf.Abs(collideNormal.x) > Mathf.Abs(collideNormal.y);
+            bool verCollide = Mathf.Abs(collideNormal.y) > Mathf.Abs(collideNormal.x);
+            Debug.Log("collide up: " + verCollide + "| collide side: " + horCollide + "last slide y: " + (lastSlideMovement.y != 0) + " AND last slide x: " + (lastSlideMovement.x != 0));
+            // BLARGH: this is very verbose but basically the collision direction needs to be checked against the last slide direction. Except the last slide direction is stored... somewhere??
+            // Anyway this does not work yet... completely. if lastSlideMov replaced by movingHorizontal/Vertical then it works if collision hapens AND the key is being held
+            if (verCollide && (lastSlideMovement.y != 0) || horCollide && (lastSlideMovement.x != 0))
+            {
+                collision = true;
+            }
+            else
+            {
+                collision = false;
+            }
         }
     }
 
