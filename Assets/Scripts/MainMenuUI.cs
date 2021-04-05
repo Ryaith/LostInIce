@@ -6,11 +6,11 @@ using TMPro;
 
 public class MainMenuUI : MonoBehaviour
 {
-    public GameObject mainPanel; //MainPanel
-    public GameObject text; //Start text
-    public GameObject instructions; //Instructions panel
+    public GameObject mainPanel;    // MainPanel
+    public GameObject text;         // Start text
+    public GameObject instructions; // Instructions panel
 
-    //Loads starter scene
+    // Loads starter scene
     public void StartGame()
     {
         //Starts scene and adds a loading text to the button

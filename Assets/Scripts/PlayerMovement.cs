@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     bool movingVertical = false;
     bool movingHorizontal = false;
 
+    private float moveHorizontal;
+    private float moveVertical;
+
 
     public Animator anim;
     public ParticleSystem ps;
@@ -29,10 +32,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        float moveHorizontal = Input.GetAxisRaw("Horizontal");
-        movingHorizontal = moveHorizontal != 0;
-        float moveVertical = Input.GetAxisRaw("Vertical");
-        movingVertical = moveVertical != 0f;
+        Debug.Log("Pause Status: " + UiScript.isPaused);
+        if (!UiScript.isPaused)
+        {
+            moveHorizontal = Input.GetAxisRaw("Horizontal");
+            movingHorizontal = moveHorizontal != 0f;
+            moveVertical = Input.GetAxisRaw("Vertical");
+            movingVertical = moveVertical != 0f;
+        }
         movement.x = moveHorizontal;
         movement.y = moveVertical;
         stopped = movement.sqrMagnitude < 0.01;
