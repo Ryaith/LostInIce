@@ -20,12 +20,19 @@ public class UiScript : MonoBehaviour
     public static bool isPaused = false;   // Conveys state of the pause menu so that player direction cannot be changed on pause 
     public static bool blackOut = false;
     public static string mapToLoad = "";
+    public GameObject DialogueObject; //Dialogue box object
+    public GameObject SpeakerObject; //Speaker name object
+    private TMP_Text speakerDialogueText; //Dialogue text
+    private TMP_Text speakerNameText; //Speaker text
 
     //Strings of stuff that can be said by Klarens at each scene
     private string scene1load = "My brother-?! Where did he go? I have to find him before the storm hits...";
     private string scene2load = "Footprints-! This must be the path, I must hurry before he freezes to death.";
     private string scene3load = "Is that Vel's scarf? I think he went further ahead... I hope he's still alright.";
     private string scene4load = "Vel-! ...Thank the gods he's okay. It's time to head home now...";
+
+    private string klarens = "Klarens";
+    private string vel = "Velius";
 
     //check for which string id to say next?
     private string nextstring = "";
@@ -51,6 +58,8 @@ public class UiScript : MonoBehaviour
         Time.timeScale = 1.0f;
         textLabel = menuButtonText.GetComponent<TMP_Text>();
         blackImg = blackImageObject.GetComponent<Image>();
+        speakerNameText = SpeakerObject.GetComponent<TMP_Text>();
+        speakerDialogueText = DialogueObject.GetComponent<TMP_Text>();
     }
 
     void Update()
