@@ -19,6 +19,7 @@ public class UiScript : MonoBehaviour
     private Image blackImg; //Img for black
     public static bool isPaused = false;   // Conveys state of the pause menu so that player direction cannot be changed on pause 
     public static bool blackOut = false;
+    public static bool isPausedOnText = false;
     public static string mapToLoad = "";
     public GameObject DialogueObject; //Dialogue box object
     public GameObject SpeakerObject; //Speaker name object
@@ -31,11 +32,21 @@ public class UiScript : MonoBehaviour
     private string scene3load = "Is that Vel's scarf? I think he went further ahead... I hope he's still alright.";
     private string scene4load = "Vel-! ...Thank the gods he's okay. It's time to head home now...";
 
+    // Klarens interacts with things
+    string klarensInteractWithHole = "I'll cover up this hole. Now, I'll be able to progress further!";
+    string klarensCannotInteractWithHole = "I can't fill in this hole... there's nothing but ice all around me.";
+
+    // Vel can say things, too
+    private string[] velDialogue = {"K-Klarens! You found me! I'm okay, I got lost... but it's not so bad in this part of the cave!", "Let's go home!!"};
+    string speakingLengthyDialogue = string.Empty;
+
     private string klarens = "Klarens";
     private string vel = "Velius";
 
     //check for which string id to say next?
     private string nextstring = "";
+
+    private static (bool isVisible, string speakerName) dialogueInfo = (false, string.Empty);   // Updated by PlayerMovement calling this class' TriggerDialogue() 
 
     private static UiScript playerInstance;
     void Awake()
@@ -64,6 +75,7 @@ public class UiScript : MonoBehaviour
 
     void Update()
     {
+        isPausedOnText = textUI.activeSelf ? true : false;
         if (Input.GetButtonDown("Cancel"))
             TogglePause();
 
@@ -71,14 +83,45 @@ public class UiScript : MonoBehaviour
         {
             StartCoroutine(FadeBlack());
         }
-
+        if (!isPausedOnText && dialogueInfo.isVisible && !string.IsNullOrEmpty(dialogueInfo.speakerName))
+        {
+            SetDialogue(dialogueInfo.speakerName);
+            textUI.SetActive(true);
+            dialogueInfo.isVisible = false;
+            dialogueInfo.speakerName = string.Empty;
+        } 
     }
+
+    public void SetDialogue(string speakerName)
+    {
+        if (speakerName == "Vel")
+        {
+            // Change textUI to hold Vel's dialogue 
+            speakingLengthyDialogue = "Vel";
+            speakerNameText.text = speakerName;
+            speakerDialogueText.text = velDialogue[0];
+            next = velDialogue.Length > 1;
+        }
+        else if (speakerName == "Klarens_Hole")
+        {
+            speakerNameText.text = "Klarens";
+            speakerDialogueText.text = klarensInteractWithHole;
+        }
+    }
+
 
     public void ContinueText()
     {
         if (next)
         {
-            textUI.SetActive(false);
+            if (speakingLengthyDialogue == "Vel")
+            {
+                for (int i = 1; i < velDialogue.Length; i++)
+                {
+                    speakerDialogueText.text = velDialogue[i];
+                }
+                next = false;
+            }
         }
         else
         {
@@ -127,6 +170,13 @@ public class UiScript : MonoBehaviour
 
         //Debug.Log("done");
         isPaused = false;
+    }
+
+    public static void TriggerDialogue(bool visible, string speakerName)
+    {
+        dialogueInfo.isVisible = visible;
+        dialogueInfo.speakerName = speakerName;
+        
     }
 
     public void TogglePause()
