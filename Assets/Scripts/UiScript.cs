@@ -80,11 +80,23 @@ public class UiScript : MonoBehaviour
         }
         if (!isPausedOnText && dialogueInfo.isVisible && !string.IsNullOrEmpty(dialogueInfo.speakerName))
         {
+            SetDialogue(dialogueInfo.speakerName);
             textUI.SetActive(true);
             dialogueInfo.isVisible = false;
             dialogueInfo.speakerName = string.Empty;
         } 
     }
+
+    public void SetDialogue(string speakerName)
+    {
+        if (speakerName == "Vel")
+        {
+            // Change textUI to hold Vel's dialogue 
+            speakerNameText.text = speakerName;
+            speakerDialogueText.text = velFound;
+        }
+    }
+
 
     public void ContinueText()
     {
