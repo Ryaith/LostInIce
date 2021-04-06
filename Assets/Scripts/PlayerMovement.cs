@@ -46,10 +46,12 @@ public class PlayerMovement : MonoBehaviour
                         if (!isIce) //Fill and remove hole if on ground
                         {
                             //Insert text here about filling the hole
+                            UiScript.TriggerDialogue(interactInfo.canInteract, "Klarens_Hole");
                             interactInfo.other.gameObject.SetActive(false);
                         }
                         else //can't fill the hole with ice/too slippery
                         {
+                            UiScript.TriggerDialogue(interactInfo.canInteract, "Klarens_Cannot_Hole");
                             //Text abt ^
                         }
                         break;

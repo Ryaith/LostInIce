@@ -107,6 +107,11 @@ public class UiScript : MonoBehaviour
             speakerNameText.text = "Klarens";
             speakerDialogueText.text = klarensInteractWithHole;
         }
+        else if (speakerName == "Klarens_Cannot_Hole")
+        {
+            speakerNameText.text = "Klarens";
+            speakerDialogueText.text = klarensCannotInteractWithHole;
+        }
     }
 
 
