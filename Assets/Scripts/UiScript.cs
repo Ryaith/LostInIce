@@ -143,7 +143,7 @@ public class UiScript : MonoBehaviour
             while (blackImg.color.a < 1)
             {
 
-                Debug.Log("fade in");
+                //Debug.Log("fade in");
                 fadeAmount = objectColor.a + (fadeSpeed * Time.deltaTime);
                 objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
                 blackImg.color = objectColor;
@@ -160,7 +160,7 @@ public class UiScript : MonoBehaviour
             //Will not unfade colour after scene loads rip.
             while (blackImg.color.a > 0)
             {
-                Debug.Log("fade out");
+                //Debug.Log("fade out");
                 fadeAmount = objectColor.a - (fadeSpeed * Time.deltaTime);
                 objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
                 blackImg.color = objectColor;
@@ -168,7 +168,7 @@ public class UiScript : MonoBehaviour
             }
         }
 
-        Debug.Log("done");
+        //Debug.Log("done");
         isPaused = false;
     }
 

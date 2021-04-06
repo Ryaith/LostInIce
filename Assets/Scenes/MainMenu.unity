@@ -1518,11 +1518,12 @@ MonoBehaviour:
 
     Klarens can be controlled
     with wasd or arrow keys, but he will slide on icy surfaces until he hits a solid
-    object. Pressing <TBD> will let him interact with the environment in front of
-    him and allow him to solve puzzles to reach Vel.
+    object. Pressing E will let him interact with the environment in front of him
+    and allow him to solve puzzles to reach Vel.
 
 
-'
+    Progress through the map to
+    save your lost little brother!'
 --- !u!222 &1371715527
 CanvasRenderer:
   m_ObjectHideFlags: 0

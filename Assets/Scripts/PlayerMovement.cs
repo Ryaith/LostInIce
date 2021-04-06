@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveHorizontal;
     private float moveVertical;
 
-    public static (bool canInteract, string interactObj) interactInfo = (false, string.Empty);    // Basic object that tracks interaction info 
+    (bool canInteract, string interactObj, Collision2D other) interactInfo = (false, string.Empty, null);    // Basic object that tracks interaction info 
 
 
     public Animator anim;
@@ -42,8 +42,16 @@ public class PlayerMovement : MonoBehaviour
                 switch(interactInfo.interactObj)
                 {
                     case "Hole":
-                        //Debug.Log("********************** HOLE ACTION");
-                        UiScript.TriggerDialogue(interactInfo.canInteract, "Klarens_Hole");
+                        Debug.Log("********************** HOLE ACTION");
+                        if (!isIce) //Fill and remove hole if on ground
+                        {
+                            //Insert text here about filling the hole
+                            interactInfo.other.gameObject.SetActive(false);
+                        }
+                        else //can't fill the hole with ice/too slippery
+                        {
+                            //Text abt ^
+                        }
                         break;
                     case "Vel":
                         //Debug.Log("********************** VEL ACTION");
@@ -158,10 +166,10 @@ public class PlayerMovement : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Hole":
-                setInteractObject(true, "Hole");
+                setInteractObject(true, "Hole", other);
                 break;
             case "Vel":
-                setInteractObject(true, "Vel");
+                setInteractObject(true, "Vel", other);
                 break;
             default:
                 break;
@@ -177,14 +185,15 @@ public class PlayerMovement : MonoBehaviour
         string exitTag = other.gameObject.tag;
         if (exitTag == "Hole" || exitTag == "Vel")
         {
-            setInteractObject(false, string.Empty);
+            setInteractObject(false, string.Empty, null);
         }
     }
 
-    private void setInteractObject(bool canInteract, string tag)
+    private void setInteractObject(bool canInteract, string tag, Collision2D other)
     {
         interactInfo.canInteract = canInteract;
         interactInfo.interactObj = tag;
+        interactInfo.other = other;
     }
 }
 
