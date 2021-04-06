@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveHorizontal;
     private float moveVertical;
 
-    (bool canInteract, string interactObj) interactInfo = (false, string.Empty);    // Basic object that tracks interaction info 
+    public static (bool canInteract, string interactObj) interactInfo = (false, string.Empty);    // Basic object that tracks interaction info 
 
 
     public Animator anim;
@@ -34,30 +34,30 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         //Debug.Log("Pause Status: " + UiScript.isPaused);
-        if (!UiScript.isPaused)
+        if (!UiScript.isPaused && !UiScript.isPausedOnText)
         {
-            // Debug.Log("INTERACT: " + canInteract);
+            Debug.Log("NOT PAUSED!!!!!");
             if (!sliding && interactInfo.canInteract && Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("************* E HIT!");
                 // Trigger desired action on interact
                 switch(interactInfo.interactObj)
                 {
                     case "Hole":
-                        Debug.Log("********************** HOLE ACTION");
+                        //Debug.Log("********************** HOLE ACTION");
                         break;
                     case "Vel":
-                        Debug.Log("********************** VEL ACTION");
+                        //Debug.Log("********************** VEL ACTION");
+                        UiScript.TriggerDialogue(interactInfo.canInteract, "Vel");
                         break;
                     default:
                         break;
                 }
-            }
+            } 
             moveHorizontal = Input.GetAxisRaw("Horizontal");
             movingHorizontal = moveHorizontal != 0f;
             moveVertical = Input.GetAxisRaw("Vertical");
             movingVertical = moveVertical != 0f;
-        }
+        } 
         movement.x = moveHorizontal;
         movement.y = moveVertical;
         stopped = movement.sqrMagnitude < 0.01;

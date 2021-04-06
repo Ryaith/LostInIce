@@ -19,6 +19,7 @@ public class UiScript : MonoBehaviour
     private Image blackImg; //Img for black
     public static bool isPaused = false;   // Conveys state of the pause menu so that player direction cannot be changed on pause 
     public static bool blackOut = false;
+    public static bool isPausedOnText = false;
     public static string mapToLoad = "";
     public GameObject DialogueObject; //Dialogue box object
     public GameObject SpeakerObject; //Speaker name object
@@ -39,6 +40,8 @@ public class UiScript : MonoBehaviour
 
     //check for which string id to say next?
     private string nextstring = "";
+
+    private static (bool isVisible, string speakerName) dialogueInfo = (false, string.Empty);   // Updated by PlayerMovement calling this class' TriggerDialogue() 
 
     private static UiScript playerInstance;
     void Awake()
@@ -67,6 +70,7 @@ public class UiScript : MonoBehaviour
 
     void Update()
     {
+        isPausedOnText = textUI.activeSelf ? true : false;
         if (Input.GetButtonDown("Cancel"))
             TogglePause();
 
@@ -74,7 +78,12 @@ public class UiScript : MonoBehaviour
         {
             StartCoroutine(FadeBlack());
         }
-        isPaused = textUI.activeSelf ? true : false;
+        if (!isPausedOnText && dialogueInfo.isVisible && !string.IsNullOrEmpty(dialogueInfo.speakerName))
+        {
+            textUI.SetActive(true);
+            dialogueInfo.isVisible = false;
+            dialogueInfo.speakerName = string.Empty;
+        } 
     }
 
     public void ContinueText()
@@ -132,6 +141,14 @@ public class UiScript : MonoBehaviour
         isPaused = false;
     }
 
+    public static void TriggerDialogue(bool visible, string speakerName)
+    {
+        Debug.Log("GREAT GOOGLY MOOGLY THIS IS A TALK HOHOHOHOHOOOHOHOHO");
+        dialogueInfo.isVisible = visible;
+        dialogueInfo.speakerName = speakerName;
+        
+    }
+
     public void TogglePause()
     {
         if (Time.timeScale == 0f)
@@ -146,6 +163,7 @@ public class UiScript : MonoBehaviour
         else
         {
             isPaused = true;
+            Debug.Log("What else broke");
             menuUI.gameObject.SetActive(true);
             blocker.gameObject.SetActive(true);
             textLabel.text = "Hide Menu";
