@@ -32,8 +32,12 @@ public class UiScript : MonoBehaviour
     private string scene3load = "Is that Vel's scarf? I think he went further ahead... I hope he's still alright.";
     private string scene4load = "Vel-! ...Thank the gods he's okay. It's time to head home now...";
 
+    // Klarens interacts with things
+    string klarensInteractWithHole = "I'll cover up this hole. Now, I'll be able to progress further!";
+
     // Vel can say things, too
-    private string velFound = "K-Klarens! You found me! I'm okay, I got lost... but it's not so bad in this part of the cave!";
+    private string[] velDialogue = {"K-Klarens! You found me! I'm okay, I got lost... but it's not so bad in this part of the cave!", "Let's go home!!"};
+    string speakingLengthyDialogue = string.Empty;
 
     private string klarens = "Klarens";
     private string vel = "Velius";
@@ -92,8 +96,15 @@ public class UiScript : MonoBehaviour
         if (speakerName == "Vel")
         {
             // Change textUI to hold Vel's dialogue 
+            speakingLengthyDialogue = "Vel";
             speakerNameText.text = speakerName;
-            speakerDialogueText.text = velFound;
+            speakerDialogueText.text = velDialogue[0];
+            next = velDialogue.Length > 1;
+        }
+        else if (speakerName == "Klarens_Hole")
+        {
+            speakerNameText.text = "Klarens";
+            speakerDialogueText.text = klarensInteractWithHole;
         }
     }
 
@@ -102,7 +113,14 @@ public class UiScript : MonoBehaviour
     {
         if (next)
         {
-            textUI.SetActive(false);
+            if (speakingLengthyDialogue == "Vel")
+            {
+                for (int i = 1; i < velDialogue.Length; i++)
+                {
+                    speakerDialogueText.text = velDialogue[i];
+                }
+                next = false;
+            }
         }
         else
         {

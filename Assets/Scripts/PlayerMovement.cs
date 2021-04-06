@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     case "Hole":
                         //Debug.Log("********************** HOLE ACTION");
+                        UiScript.TriggerDialogue(interactInfo.canInteract, "Klarens_Hole");
                         break;
                     case "Vel":
                         //Debug.Log("********************** VEL ACTION");
