@@ -143,7 +143,6 @@ public class UiScript : MonoBehaviour
 
     public static void TriggerDialogue(bool visible, string speakerName)
     {
-        Debug.Log("GREAT GOOGLY MOOGLY THIS IS A TALK HOHOHOHOHOOOHOHOHO");
         dialogueInfo.isVisible = visible;
         dialogueInfo.speakerName = speakerName;
         
@@ -163,7 +162,6 @@ public class UiScript : MonoBehaviour
         else
         {
             isPaused = true;
-            Debug.Log("What else broke");
             menuUI.gameObject.SetActive(true);
             blocker.gameObject.SetActive(true);
             textLabel.text = "Hide Menu";

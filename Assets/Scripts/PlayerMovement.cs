@@ -36,7 +36,6 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log("Pause Status: " + UiScript.isPaused);
         if (!UiScript.isPaused && !UiScript.isPausedOnText)
         {
-            Debug.Log("NOT PAUSED!!!!!");
             if (!sliding && interactInfo.canInteract && Input.GetKeyDown(KeyCode.E))
             {
                 // Trigger desired action on interact
