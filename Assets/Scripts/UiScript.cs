@@ -34,6 +34,7 @@ public class UiScript : MonoBehaviour
 
     // Klarens interacts with things
     string klarensInteractWithHole = "I'll cover up this hole. Now, I'll be able to progress further!";
+    string klarensCannotInteractWithHole = "I can't fill in this hole... there's nothing but ice all around me.";
 
     // Vel can say things, too
     private string[] velDialogue = {"K-Klarens! You found me! I'm okay, I got lost... but it's not so bad in this part of the cave!", "Let's go home!!"};
